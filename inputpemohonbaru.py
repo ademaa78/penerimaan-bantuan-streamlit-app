@@ -10,7 +10,8 @@ def main():
     SHEET_NAME = "1Q8rDR0o50K7uH4peO_W49UKoHeL1VgGgKxUwGauV3CY"
     WORKSHEET_NAME = "Sheet2"
     scope = ["https://spreadsheets.google.com/feeds","https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(
+        st.secrets["gcp_service_account"], scope
     client = gspread.authorize(creds)
     sheet = client.open_by_key(SHEET_NAME).worksheet(WORKSHEET_NAME)
 
@@ -272,4 +273,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
