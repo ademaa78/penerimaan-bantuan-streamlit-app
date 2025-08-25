@@ -55,7 +55,10 @@ def main():
         col1, col2 = st.columns(2)
         with col1:
             default_tgl_entry = st.session_state.form_data.get("tgl_entry", date.today())
-            tgl_entry = st.date_input("Tgl Entry", value=default_tgl_entry)
+            tgl_entry = st.date_input(
+            "Tgl Entry",
+            value=st.session_state.form_data.get("Tgl Entry", date.today())
+            )
             tgl_entry_str = tgl_entry.strftime("%Y-%m-%d")
             
             nik = st.text_input("NIK Pemohon", value=st.session_state.form_data.get("nik", ""))
@@ -195,7 +198,7 @@ def main():
 
                 # === Mapping kolom Sheet2 -> Sheet1 ===
                 df_disetujui = df_disetujui.rename(columns={
-                    "Tgl entry": "Tgl Entry",
+                    "Tgl Entry": tgl_entry_str,
                     "NIK Pemohon": "NIK",
                     "KK Pemohon": "No KK",
                     "Nama Pemohon": "Nama",
@@ -225,7 +228,7 @@ def main():
                 
                 # === Definisi struktur kolom di Sheet1 ===
                 kolom_sheet1 = [
-                    "No", "Tgl Entry", "NIK", "No KK", "Nama", "Alamat",
+                    "Tgl Entry", "NIK", "No KK", "Nama", "Alamat",
                     "Kab/Kota Penerima", "Pekerjaan", "Status Kelompok", "Jabatan",
                     "Nama Kelompok", "Jenis Bantuan", "Jumlah Bantuan", "Satuan",
                     "Bantuan Berupa Rupiah", "Sumber Dana", "Bidang Pemberi Bantuan",
@@ -273,6 +276,6 @@ def main():
             st.error(f"Gagal mengambil data dari Sheet2: {e}")
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
 
     main()
