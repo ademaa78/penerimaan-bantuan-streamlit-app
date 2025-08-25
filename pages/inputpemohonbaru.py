@@ -113,12 +113,12 @@ def main():
     if simpan:
         next_no = len(df) + 1
         row_data = [
-            next_no, tgl_entry_str, nik, no_kk, nama, alamat, kab_kota, pekerjaan,
-            status_kelompok, jabatan_dalam_kelompok, nama_kelompok, jenis_bantuan, jumlah_bantuan, satuan,
-            rupiah, sumber_dana, bidang_pemberi, tahun, keterangan, status_pemohon
+           tgl_entry_str, nik, no_kk, nama, alamat, kab_kota, pekerjaan,
+           status_kelompok, jabatan_dalam_kelompok, nama_kelompok,
+           jenis_bantuan, jumlah_bantuan, satuan, rupiah, sumber_dana,
+           bidang_pemberi, tahun, keterangan, status_pemohon
         ]
-
-        
+       
         row_data = [to_str(v) for v in row_data]
         sheet.append_row(row_data)
         st.success("✅ Data berhasil disimpan!")
