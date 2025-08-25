@@ -6,7 +6,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 # === KONFIGURASI GOOGLE SHEETS ===
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_dict(
+        st.secrets["gcp_service_account"], scope
 client = gspread.authorize(creds)
 
 SHEET_ID = "1Q8rDR0o50K7uH4peO_W49UKoHeL1VgGgKxUwGauV3CY"
@@ -252,3 +253,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
