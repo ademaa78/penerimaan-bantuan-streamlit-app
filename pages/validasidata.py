@@ -87,7 +87,7 @@ def main():
 
     default_year = safe_int_from_state("Tahun Penerimaan", datetime.today().year)
     default_jumlah = safe_int_from_state("Jumlah Bantuan", 0)
-    default_rupiah = safe_int_from_state("Bantuan Berupa Rupiah", 0)
+    default_rupiah = safe_int_from_state("Nilai Bantuan Berupa Rupiah", 0)
     default_nik = safe_int_from_state("NIK", 0)
     default_kk = safe_int_from_state("No KK", 0)
 
@@ -202,7 +202,7 @@ def main():
                 "Satuan": satuan,
                 "Bantuan Berupa Rupiah": int(rupiah),
                 "Sumber Dana": sumber_dana,
-                "Bidang Pemberi Bantuan": bidang_pemberi,
+                "Program/Kegiatan/Sub Kegiatan": bidang_pemberi,
                 "Tahun Penerimaan": int(tahun),
                 "Keterangan": keterangan or ket,
                 "Status": status,
@@ -254,5 +254,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
