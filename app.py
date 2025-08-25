@@ -152,14 +152,22 @@ if st.session_state.page == "Halaman Utama":
 elif st.session_state.page == "Input Pemohon Baru":
     try:
         import pages.inputpemohonbaru as ipb
-        ipb.main() if hasattr(ipb, "main") else st.warning("Fungsi main() belum dibuat di inputpemohonbaru.py")
-    except ModuleNotFoundError:
-        st.error("Halaman Input Pemohon Baru belum ditemukan. Pastikan file 'pages/inputpemohonbaru.py' ada.")
+        if hasattr(ipb, "main"):
+            ipb.main()
+        else:
+            st.warning("Fungsi main() belum dibuat di inputpemohonbaru.py")
+    except Exception as e:
+        st.error(f"Halaman Input Pemohon Baru error: {type(e).__name__} - {e}")
 
 # === Konten Halaman Validasi Data Penerima Bantuan ===
 elif st.session_state.page == "Validasi Data Penerima Bantuan":
     try:
         import pages.validasidata as vd
-        vd.main() if hasattr(vd, "main") else st.warning("Fungsi main() belum dibuat di validasidata.py")
-    except ModuleNotFoundError:
-        st.error("Halaman Validasi Data belum ditemukan. Pastikan file 'pages/validasidata.py' ada.")
+        if hasattr(vd, "main"):
+            vd.main()
+        else:
+            st.warning("Fungsi main() belum dibuat di validasidata.py")
+    except Exception as e:
+        st.error(f"Halaman Validasi Data error: {type(e).__name__} - {e}")
+
+
